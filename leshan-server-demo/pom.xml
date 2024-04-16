@@ -30,6 +30,21 @@ Contributors:
 
   <dependencies>
     <dependency>
+      <groupId>net.grandcentrix</groupId>
+      <artifactId>gcx-leshan-server-spring-boot-starter</artifactId>
+      <version>0.9.3-SNAPSHOT</version>
+      <exclusions>
+        <exclusion>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-core</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
       <groupId>org.jmdns</groupId>
       <artifactId>jmdns</artifactId>
     </dependency>

@@ -65,9 +65,13 @@ import org.eclipse.leshan.server.security.FileSecurityStore;
 import org.eclipse.leshan.transport.javacoap.server.endpoint.JavaCoapServerEndpointsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import picocli.CommandLine;
 
+@SpringBootApplication
 public class LeshanServerDemo {
 
     static {
@@ -97,7 +101,8 @@ public class LeshanServerDemo {
 
         try {
             // Create LWM2M Server
-            LeshanServer lwm2mServer = createLeshanServer(cli);
+            ConfigurableApplicationContext context = SpringApplication.run(LeshanServerDemo.class, args);
+            LeshanServer lwm2mServer = context.getBean(LeshanServer.class);
 
             // Create Web Server
             Server webServer = createJettyServer(cli, lwm2mServer);
